@@ -1,0 +1,5 @@
+#!/bin/sh
+ARGUMENTS=$*
+DIRNAME="$(dirname $(which $0))"
+CMD="jsdb -path $DIRNAME $DIRNAME/bin/JSBuilder.js $ARGUMENTS"
+$CMD

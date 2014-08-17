@@ -1,0 +1,21 @@
+{
+  "name": "nodeExtTest",
+  "version": "0.0.1",
+  "description": "Ext JS 4 App with Express.js, Node.js and MongoDB on the backend",
+  "main": "app.js",
+  "authors": [
+    "Nikolay Torbev"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/javascripts/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bower-extjs": "~0.0.4"
+  }
+}
