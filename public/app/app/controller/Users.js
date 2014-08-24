@@ -41,7 +41,8 @@ Ext.define('NickApp.controller.Users', {
         //ask user about removing
         Ext.Msg.confirm('Confirm', 'Remove?', function(button) {
             if (button === 'yes') {
-                grid.getStore().removeAt(grid.getSelectionModel().selected.items[0].index);
+                grid.getStore().remove(grid.getSelectionModel().getSelection()[0]);
+//                grid.getStore().removeAt(grid.getSelectionModel().selected.items[0].index);
             }
         });
     },
@@ -68,35 +69,20 @@ Ext.define('NickApp.controller.Users', {
             form = me.getUsersAdd().down('form').getForm(),
             rec;
 
-        if(form.isValid()){
-//            form.submit({
-//                url: '/users',
-//                waitMsg: 'Uploading your photo...',
-//                success: function(fp, o) {
-//                    console.log(o.result);
-//                }
-//            });
             form.updateRecord();
             rec = form.getRecord();
-//            Ext.data.proxy.Ajax({
-//                url: '/users',
-//                model: 'User',
-//                reader: {
-//                    type: 'json',
-//                    root: 'User'
-//                }
-//            });
             Ext.Ajax.request({
                 url : '/users',
                 method:'POST',
                 headers: { "Content-Type": "application/json" },
                 params:JSON.stringify(rec.data),
-                    success: function(res, opts) {
+                success: function(res, opts) {
                     var response = Ext.decode(res.responseText),
-                        users = Ext.StoreManager.get('Users'),
-                        finishedtaks = Ext.StoreManager.get('FinishedTask');
-                    users.loadData(response.User);
-                    finishedtaks.loadData(response.User);
+                        usersInfo = Ext.StoreManager.get('Users'),
+                        finishedTask = Ext.StoreManager.get('FinishedTask');
+                    usersInfo.add(rec);
+//                    var a=me.getUsersList()
+//                    finishedTask.loadData(response.User);
                 },
                 failure: function(response, opts) {
                     console.log('server-side failure with status code ' + response.status);

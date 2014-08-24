@@ -76,6 +76,7 @@ Ext.define('NickApp.view.users.List', {
             }
         ];
         this.columns = [
+            {xtype: 'rownumberer'},
             { text: 'Id', dataIndex: '_id', hidden: true },
             {
                 text: 'Login',
@@ -84,21 +85,22 @@ Ext.define('NickApp.view.users.List', {
                     allowBlank: false
                 }
             },
-            {
-                xtype: 'actioncolumn',
-                menuText: 'Password',
-                flex: 0.1,
-                items: [
-                    {
-                        handler: function(view, rowIndex, colIndex, item, e, record, row) {
-                            //open window to generate password and send via mail
-                        },
-                        iconCls: 'button-edit',
-                        tooltip: 'Edit User Password'
-                    }
-                ],
-                text: 'Password'
-            },
+//            {
+//                xtype: 'actioncolumn',
+//                text: 'Password',
+//                menuText: 'Password',
+//                flex: 0.1,
+//                items: [
+//                    {
+//                        handler: function(view, rowIndex, colIndex, item, e, record, row) {
+//                            //open window to generate password and send via mail
+//                        },
+//                        iconCls: 'button-edit',
+//                        tooltip: 'Edit User Password'
+//                    }
+//                ]
+//
+//            },
             {
                 text: 'Email',
                 dataIndex: 'email',
