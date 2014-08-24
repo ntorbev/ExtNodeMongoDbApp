@@ -69,7 +69,8 @@ Ext.define('NickApp.controller.Users', {
             form = me.getUsersAdd().down('form').getForm(),
             rec;
 
-            form.updateRecord();
+        if(form.isValid()){
+                form.updateRecord();
             rec = form.getRecord();
             Ext.Ajax.request({
                 url : '/users',
