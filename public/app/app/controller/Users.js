@@ -41,8 +41,26 @@ Ext.define('NickApp.controller.Users', {
         //ask user about removing
         Ext.Msg.confirm('Confirm', 'Remove?', function(button) {
             if (button === 'yes') {
-                grid.getStore().remove(grid.getSelectionModel().getSelection()[0]);
+                var rec =grid.getSelectionModel().getSelection()[0];
+                grid.getStore().remove(rec);
 //                grid.getStore().removeAt(grid.getSelectionModel().selected.items[0].index);
+                Ext.Ajax.request({
+                    url : '/users',
+                    method:'DELETE',
+                    headers: { "Content-Type": "application/json" },
+                    params:JSON.stringify({_id:rec.data._id}),
+                    success: function(res, opts) {
+                        var response = Ext.decode(res.responseText),
+                            usersInfo = Ext.StoreManager.get('Users'),
+                            finishedTask = Ext.StoreManager.get('FinishedTask');
+                        usersInfo.add(rec);
+//                    var a=me.getUsersList()
+//                    finishedTask.loadData(response.User);
+                    },
+                    failure: function(response, opts) {
+                        console.log('server-side failure with status code ' + response.status);
+                    }
+                });
             }
         });
     },
@@ -70,7 +88,7 @@ Ext.define('NickApp.controller.Users', {
             rec;
 
         if(form.isValid()){
-                form.updateRecord();
+            form.updateRecord();
             rec = form.getRecord();
             Ext.Ajax.request({
                 url : '/users',

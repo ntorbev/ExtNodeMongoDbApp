@@ -18,7 +18,10 @@ Ext.define('NickApp.view.users.List', {
                 items: [
                     {
                         text: 'Edit',
-                        iconCls: 'button-edit'
+                        iconCls: 'button-edit',
+                        handler: function(){
+                            me.fireEvent('removeRow', this);
+                        }
                     },
                     {
                         text: 'Remove',
