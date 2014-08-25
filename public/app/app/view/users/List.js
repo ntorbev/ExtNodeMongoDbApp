@@ -20,7 +20,9 @@ Ext.define('NickApp.view.users.List', {
                         text: 'Edit',
                         iconCls: 'button-edit',
                         handler: function(){
-                            me.fireEvent('removeRow', this);
+                            var index = me.store.indexOf(me.getSelectionModel().getSelection()[0]);
+                            me.plugins[0].startEdit(index,0);
+//                            me.fireEvent('removeRow', this);
                         }
                     },
                     {
@@ -136,7 +138,7 @@ Ext.define('NickApp.view.users.List', {
                         iconCls: 'button-edit',
                         tooltip: 'Edit',
                         handler: function (grid, rowIndex, colIndex) {
-                            this.up('grid').fireEvent('editRow', grid, rowIndex, colIndex);
+                            me.plugins[0].startEdit(rowIndex,0);
                         }
                     },
                     {
