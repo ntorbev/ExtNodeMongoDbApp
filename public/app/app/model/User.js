@@ -19,5 +19,7 @@ Ext.define('NickApp.model.User', {
         },{
             name: '_id',
             defaultValue: null
+        },{
+        name: 'comments'
         }]
 });

@@ -36,11 +36,12 @@ Ext.define('NickApp.view.Main', {
             xtype: 'panel',
             height: 200,
             width: 300,
-            store:'FinishedTask',
+//            store:'FinishedTask',
             collapsible:true,
             items:[
                 {
                     xtype:'grid',
+                    store:'FinishedTask',
                     columns: [
                         { text: 'Last update', dataIndex: 'time', flex: 1 },
                         { text: 'comments', dataIndex: 'comments' }

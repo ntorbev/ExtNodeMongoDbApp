@@ -41,9 +41,11 @@ Ext.define('NickApp.view.users.Add', {
                             fieldLabel: 'Email',
                             name: 'email',
                             vtype: 'email'
-                        },{
+                        },
+                        {
                             fieldLabel: 'Comments',
-                            name: 'comments'
+                            name: 'comments',
+                            type:"string"
                         }
 //                        {
 //
