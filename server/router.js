@@ -15,7 +15,7 @@ module.exports = function(app, models)
     //create
     app.post('/users', user.add);
     //update
-//    app.put('/users', user.update);
+    app.put('/users', user.update);
 //    //remove
     app.delete('/users', user.destroy);
 }

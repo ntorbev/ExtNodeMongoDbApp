@@ -8,12 +8,25 @@ exports.read = function (req, res) {
 exports.add = function (req, res) {
     var params = req.body,
         item;
+    if(params.update){
+        var params = req.body.rec, id = params._id;
+        delete params._id;
 
+        exports.model.User.update({"_id": id},{ $set : params}, {upsert:false}, function (err) {
+            if(!err) {
+                res.send({success: true});
+            }
+            else {
+                res.send({success: false});
+            }
+        });
+        return;
+    }
     item = new exports.model.User(params);
 
     item.save(function(err) {
         if(!err) {
-            res.send({success: true, User: item});
+            res.send({success: true, users:{ userInfo:item,finishedTaskInfo:{comments:item._doc.comments,time:item._doc.time}}});
         }
         else {
             res.send({success: false, User: item});

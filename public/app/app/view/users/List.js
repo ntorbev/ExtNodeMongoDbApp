@@ -19,10 +19,11 @@ Ext.define('NickApp.view.users.List', {
                     {
                         text: 'Edit',
                         iconCls: 'button-edit',
+                        scope:this,
                         handler: function(){
                             var index = me.store.indexOf(me.getSelectionModel().getSelection()[0]);
                             me.plugins[0].startEdit(index,0);
-//                            me.fireEvent('removeRow', this);
+//                            me.fireEvent('editRow', this);
                         }
                     },
                     {

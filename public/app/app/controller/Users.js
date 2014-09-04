@@ -27,6 +27,8 @@ Ext.define('NickApp.controller.Users', {
             },
             'usersList':{
                 removeRow: me.removeRow,
+                edit:me.editRow,
+//                editRow:me.editRow,
                 beforerender:me.beforeRend
             },
             'usersAdd > form button#save': {
@@ -53,14 +55,30 @@ Ext.define('NickApp.controller.Users', {
                         var response = Ext.decode(res.responseText),
                             usersInfo = Ext.StoreManager.get('Users'),
                             finishedTask = Ext.StoreManager.get('FinishedTask');
-                        usersInfo.add(rec);
 //                    var a=me.getUsersList()
-//                    finishedTask.loadData(response.User);
+
                     },
                     failure: function(response, opts) {
                         console.log('server-side failure with status code ' + response.status);
                     }
                 });
+            }
+        });
+    },
+    editRow:function(editor, e){
+        Ext.Ajax.request({
+            url : '/users',
+            method:'POST',
+            headers: { "Content-Type": "application/json"},
+//            headers : {
+//                'X-HTTP-Method-Override' : 'PUT'
+//            },
+            params:JSON.stringify({update:'update', rec:e.record.data}),
+            success: function(res, opts) {
+//
+            },
+            failure: function(response, opts) {
+                console.log('server-side failure with status code ' + response.status);
             }
         });
     },
@@ -99,9 +117,9 @@ Ext.define('NickApp.controller.Users', {
                     var response = Ext.decode(res.responseText),
                         usersInfo = Ext.StoreManager.get('Users'),
                         finishedTask = Ext.StoreManager.get('FinishedTask');
-                    usersInfo.add(rec);
+                    usersInfo.add(response.users.userInfo);
 //                    var a=me.getUsersList()
-//                    finishedTask.loadData(response.User);
+                    finishedTask.add(response.users.finishedTaskInfo);
                 },
                 failure: function(response, opts) {
                     console.log('server-side failure with status code ' + response.status);
