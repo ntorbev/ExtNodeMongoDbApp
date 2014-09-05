@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+.button-edit{
+    background: url(../images/Update-icon.png) no-repeat;
+    background-size: 95% 95%;
+}
+.button-remove{
+     background: url(../images/Remove-icon.png) no-repeat;
+     background-size: 95% 95%;
+ }
