@@ -47,39 +47,9 @@ Ext.define('NickApp.view.users.Add', {
                             name: 'comments',
                             type:"string"
                         }
-//                        {
-//
-//                            xtype: 'filefield',
-//                            fieldLabel: 'File upload',
-//                            name: 'photo',
-//                            id: 'form-file',
-//                            buttonText: 'Select Photo...'
-//                        }
                     ],
-//                    buttons: [{
-//                        text: 'Upload',
-//                        handler: function() {
-//                            var form = this.up('form').getForm();
-//                            if(form.isValid()){
-//                                form.submit({
-//                                    url: '/users',
-//                                    waitMsg: 'Uploading your photo...',
-//                                    success: function(fp, o) {
-//                                        Ext.Msg.alert('Success', 'Your photo "' + o.result.file + '" has been uploaded.');
-//                                    }
-//                                });
-//                            }
-//                        }
-//                    }],
                     bbar: [
                         '->',
-    //                        {
-    //                            fieldLabel: 'PIN Number',
-    //                            name: 'pin',
-    //                            minLength: 4,
-    //                            maxLength: 4,
-    //                            vtype: ['pin', 'digits']
-    //                        },
                         {
                             xtype: 'button',
                             cls:'x-btn-default-small',

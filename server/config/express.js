@@ -1,12 +1,11 @@
-var express = require('express'),
-    path = require('path'),
+var path = require('path'),
     favicon = require('static-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
-    var router = require('../router');
+    bodyParser = require('body-parser'),
+    router = require('../router');
 
-module.exports = function(app, config) {
+module.exports = function(app, express) {
     app.set('view engine', 'jade');
 
     app.set('views', path.join(__dirname, '../../views'));

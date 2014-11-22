@@ -1,14 +1,14 @@
 
 module.exports = function(app, models)
 {
-//    var index = require('./controller');
-    var user = require('./controller/user');
+    var index = require('./controller/index');
+    var user =  require('./controller/user');
 
     /* set models */
     user.model = models.User;
 
 //    /* set controllers */
-//    app.get('/', index.index);
+    app.get('/', index.index);
 
     //read
     app.get('/users', user.read);

@@ -11,8 +11,6 @@ module.exports = function (mongoose) {
 
     var User = mongoose.model('User', UserSchema);
 
-    //put custom methods here
-
     return {
         User: User
     }

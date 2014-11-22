@@ -55,8 +55,6 @@ Ext.define('NickApp.controller.Users', {
                         var response = Ext.decode(res.responseText),
                             usersInfo = Ext.StoreManager.get('Users'),
                             finishedTask = Ext.StoreManager.get('FinishedTask');
-//                    var a=me.getUsersList()
-
                     },
                     failure: function(response, opts) {
                         console.log('server-side failure with status code ' + response.status);
@@ -70,9 +68,6 @@ Ext.define('NickApp.controller.Users', {
             url : '/users',
             method:'POST',
             headers: { "Content-Type": "application/json"},
-//            headers : {
-//                'X-HTTP-Method-Override' : 'PUT'
-//            },
             params:JSON.stringify({update:'update', rec:e.record.data}),
             success: function(res, opts) {
 //
@@ -89,6 +84,7 @@ Ext.define('NickApp.controller.Users', {
                 var response = Ext.decode(res.responseText),
                     users = Ext.StoreManager.get('Users'),
                     finishedtaks = Ext.StoreManager.get('FinishedTask');
+
                 users.loadData(response.User);
                 finishedtaks.loadData(response.User);
             },
@@ -117,15 +113,14 @@ Ext.define('NickApp.controller.Users', {
                     var response = Ext.decode(res.responseText),
                         usersInfo = Ext.StoreManager.get('Users'),
                         finishedTask = Ext.StoreManager.get('FinishedTask');
+
                     usersInfo.add(response.users.userInfo);
-//                    var a=me.getUsersList()
                     finishedTask.add(response.users.finishedTaskInfo);
                 },
                 failure: function(response, opts) {
                     console.log('server-side failure with status code ' + response.status);
                 }
             });
-//            me.getUsersList().getStore().add(rec);
             me.getUsersAdd().destroy();
         }
     },

@@ -8,6 +8,5 @@ Ext.application({
     requires: ['Ext.container.Viewport'],
     appFolder: 'app/app',
     extend: 'NickApp.Application',
-    
     autoCreateViewport: true
 });

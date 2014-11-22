@@ -42,16 +42,7 @@ Ext.define('NickApp.view.users.List', {
                 rowMenu.showAt(e.getXY());
             },
             afterrender:function(){
-//                Ext.StoreManager.get('Users').load({
-//                    scope: this,
-//                    callback: function(records, operation, success) {
-//                        debugger;
-//                        // the operation object
-//                        // contains all of the details of the load operation
-//                        console.log(records);
-//                    }
-//                });
-
+                //
             }
         };
         this.plugins = [rowEditing];
@@ -91,22 +82,6 @@ Ext.define('NickApp.view.users.List', {
                     allowBlank: false
                 }
             },
-//            {
-//                xtype: 'actioncolumn',
-//                text: 'Password',
-//                menuText: 'Password',
-//                flex: 0.1,
-//                items: [
-//                    {
-//                        handler: function(view, rowIndex, colIndex, item, e, record, row) {
-//                            //open window to generate password and send via mail
-//                        },
-//                        iconCls: 'button-edit',
-//                        tooltip: 'Edit User Password'
-//                    }
-//                ]
-//
-//            },
             {
                 text: 'Email',
                 dataIndex: 'email',
