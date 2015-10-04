@@ -1,17 +1,16 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var models = {
-    User: require('./server/model/user')(mongoose)
-};
+var express=require('express'),
+	app = express(),
+	mongoose = require('mongoose'),
+	models = {
+    	User: require('./server/model/user')(mongoose)
+	},
+	dbPath = 'mongodb://localhost/data';
 
-var app = express();
-var dbPath = 'mongodb://localhost/data';
 mongoose.connect(dbPath, function onMongooseError(err) {
     if (err) throw err;
 });
 
 require('./server/config/express')(app,express);
-//require('./server/index')(app);
 require('./server/router')(app,models);
 
 app.listen(3000);
