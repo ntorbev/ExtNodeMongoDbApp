@@ -15,6 +15,7 @@
     "mongodb": "*",
     "monk": "*",
     "mongoose": "^4.1.9",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "nodemon": "^1.7.1"
   }
 }
